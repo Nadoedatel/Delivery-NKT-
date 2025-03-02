@@ -102,3 +102,57 @@ header{
 .delivery-time img{
     padding: 0;
 }
+
+.card-product{
+    max-width: 268px;
+}
+
+.card-product img{
+    max-height: 131px;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.name-product{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px 5px;
+}
+
+.name-product p{
+    margin: 0;
+}
+
+.name-product img{
+    max-width: 14px;
+}
+
+.start-product{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.time-product{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    padding: 5px 5px;
+    padding-top: 0;
+}
+
+.time-product p{
+    margin: 0;
+}
+
+.time-product img{
+    max-width: 14px;
+}
+
+.box-card-product{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+}
