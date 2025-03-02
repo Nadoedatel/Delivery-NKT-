@@ -50,11 +50,8 @@ header{
     min-height: auto;
 }
 
-.center{
+body{
     justify-self: center;
-}
-
-.center-1440px{
     max-width: 1440px;
 }
 
@@ -155,4 +152,42 @@ header{
     flex-direction: row;
     justify-content: center;
     gap: 20px;
+}
+
+.footer-nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+li{
+     list-style: none;
+}
+
+.food-footer-nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.plug-footer-nav{
+    margin: 0;
+    margin-bottom: 10px;
+    min-width: 210px;
+    font-size: 17px ;
+}
+
+.company-footer-nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    text-align: right;
+}
+
+.li-footer-nav{
+    padding: 0;
+}
+
+.li-footer-nav li{
+    padding: 5px 5px;
 }
