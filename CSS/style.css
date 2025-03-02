@@ -7,6 +7,14 @@ header{
     align-items: center;
 }
 
+body{
+    font-family: 'Caveat';
+}
+
+h1{
+    font-size: 40px;
+}
+
 .logo-input{
     display: flex;
     flex-direction: row;
