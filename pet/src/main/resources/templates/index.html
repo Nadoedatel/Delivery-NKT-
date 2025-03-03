@@ -1,27 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
-    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="../static/CSS/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    <header>
-        <div class="logo-input">
-            <div>
-                <a href="#"><img class="logo" src="images/logo.svg" alt="Logo"></a>
-            </div>
-            <div class="search-product">
-                <input class="found-input" type="search" placeholder="Найти товар">
-                <button class="found-button">Найти</button>
-            </div>
-        </div>
-        <div>
-            <a href="#"><img class="profile" src="images/profile.svg" alt="Profile"></a>
-        </div>
-    </header>
+    <header th:insert="html/header.html :: header"></header>
     <main>
         <hr> 
         <div class="center"> 
@@ -32,63 +19,63 @@
                         <div class="box-shop">
                             <a><img src="https://eda.yandex/images/3770794/6ff780e53d02e27483bc22062f2918f9.png" alt=""></a>
                             <div class="delivery-time">
-                                <img src="images/delivery.svg" alt="delivery">
+                                <img src="../static/images/delivery.svg" alt="delivery">
                                 <p>30-40 мин</p>
                             </div>
                         </div>
                         <div class="box-shop">
                             <a><img src="https://eda.yandex/images/14549513/2c670ca5056518d2aaaced2795ed3407.png" alt=""></a>
                             <div class="delivery-time">
-                                <img src="images/delivery.svg" alt="delivery">
+                                <img src="../static/images/delivery.svg" alt="delivery">
                                 <p>30-40 мин</p>
                             </div>
                         </div>
                         <div class="box-shop">
                             <a><img src="https://eda.yandex/images/14667178/975320eb4ce2bd6d3290f0410520c9a5.png" alt=""></a>
                             <div class="delivery-time">
-                                <img src="images/delivery.svg" alt="delivery">
+                                <img src="../static/images/delivery.svg" alt="delivery">
                                 <p>30-40 мин</p>
                             </div>
                         </div>
                         <div class="box-shop">
                             <a><img src="https://eda.yandex/images/931388/5185ab12cae01f1d98946f4eddce00a6.png" alt=""></a>
                             <div class="delivery-time">
-                                <img src="images/delivery.svg" alt="delivery">
+                                <img src="../static/images/delivery.svg" alt="delivery">
                                 <p>30-40 мин</p>
                             </div>
                         </div>
                         <div class="box-shop">
                             <a><img src="https://eda.yandex/images/3724421/9879a1575fe6a048bd81269ca63cca12.png" alt=""></a>
                             <div class="delivery-time">
-                                <img src="images/delivery.svg" alt="delivery">
+                                <img src="../static/images/delivery.svg" alt="delivery">
                                 <p>30-40 мин</p>
                             </div>
                         </div>
                         <div class="box-shop">
                             <a><img src="https://eda.yandex/images/2761069/05546cbe9424e64b6461249857238141.png" alt=""></a>
                             <div class="delivery-time">
-                                <img src="images/delivery.svg" alt="delivery">
+                                <img src="../static/images/delivery.svg" alt="delivery">
                                 <p>30-40 мин</p>
                             </div>
                         </div>
                         <div class="box-shop">
                             <a><img src="https://eda.yandex/images/3512826/d8efaf56d8bf2574fe9b27815fa647cd.png" alt=""></a>
                             <div class="delivery-time">
-                                <img src="images/delivery.svg" alt="delivery">
+                                <img src="../static/images/delivery.svg" alt="delivery">
                                 <p>30-40 мин</p>
                             </div>
                         </div>
                         <div class="box-shop">
                             <a><img src="https://eda.yandex/images/14835768/7313dc26e4f119a11cbd8368236c1028.png" alt=""></a>
                             <div class="delivery-time">
-                                <img src="images/delivery.svg" alt="delivery">
+                                <img src="../static/images/delivery.svg" alt="delivery">
                                 <p>30-40 мин</p>
                             </div>
                         </div>
                         <div class="box-shop">
                             <a><img src="https://eda.yandex/images/13806227/667aec97adebbfb8836c570e85385cf5.png" alt=""></a>
                             <div class="delivery-time">
-                                <img src="images/delivery.svg" alt="delivery">
+                                <img src="../static/images/delivery.svg" alt="delivery">
                                 <p>30-40 мин</p>
                             </div>
                         </div>
@@ -105,12 +92,12 @@
                             <div class="name-product">
                                 <p>Доминос пицца</p>
                                 <div class="start-product">
-                                    <img src="images/star.svg" alt="">
+                                    <img src="../static/images/star.svg" alt="">
                                     <p>4.8</p>
                                 </div>
                             </div>
                             <div class="time-product">
-                                <img src="images/car.svg" alt="">
+                                <img src="../static/images/car.svg" alt="">
                                 <p>35 - 45 мин</p>
                             </div>
                         </div>
@@ -119,12 +106,12 @@
                             <div class="name-product">
                                 <p>Mak.by</p>
                                 <div class="start-product">
-                                    <img src="images/star.svg" alt="">
+                                    <img src="../static/images/star.svg" alt="">
                                     <p>4.8</p>
                                 </div>
                             </div>
                             <div class="time-product">
-                                <img src="images/car.svg" alt="">
+                                <img src="../static/images/car.svg" alt="">
                                 <p>30 - 40 мин</p>
                             </div>
                         </div>
@@ -133,12 +120,12 @@
                             <div class="name-product">
                                 <p>KFC</p>
                                 <div class="start-product">
-                                    <img src="images/star.svg" alt="">
+                                    <img src="../static/images/star.svg" alt="">
                                     <p>4.3</p>
                                 </div>
                             </div>
                             <div class="time-product">
-                                <img src="images/car.svg" alt="">
+                                <img src="../static/images/car.svg" alt="">
                                 <p>30 - 40 мин</p>
                             </div>
                         </div>
@@ -147,12 +134,12 @@
                             <div class="name-product">
                                 <p>Doner-kebab #1</p>
                                 <div class="start-product">
-                                    <img src="images/star.svg" alt="">
+                                    <img src="../static/images/star.svg" alt="">
                                     <p>4.8</p>
                                 </div>
                             </div>
                             <div class="time-product">
-                                <img src="images/car.svg" alt="">
+                                <img src="../static/images/car.svg" alt="">
                                 <p>25 - 35 мин</p>
                             </div>
                         </div>
