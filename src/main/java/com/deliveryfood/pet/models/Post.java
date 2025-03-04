@@ -14,6 +14,16 @@ public class Post {
 
     private String title, img, description, delivery_time;
 
+    private double star;
+
+    public double getStar() {
+        return star;
+    }
+
+    public void setStar(double star) {
+        this.star = star;
+    }
+
     public Long getId() {
         return id;
     }

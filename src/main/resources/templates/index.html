@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    <header th:insert="html/header.html :: header"></header>
+    <header th:insert="~{html/header.html :: header}"></header>
     <main>
         <hr> 
         <div class="center"> 
@@ -87,60 +87,18 @@
                         Filter
                     </div>
                     <div class="box-card-product">
-                        <div class="card-product">
-                            <a><img src="https://eda.yandex/images/13439948/ce2c341763afb5655d56958e83329995-648x312.jpg" alt=""></a>
+                        <div th:each="el : ${posts}" class="card-product">
+                            <a><img th:src="${el.img}" alt=""></a>
                             <div class="name-product">
-                                <p>Доминос пицца</p>
+                                <p th:text="${el.title}"></p>
                                 <div class="start-product">
                                     <img src="../images/star.svg" alt="">
-                                    <p>4.8</p>
+                                    <p th:text="${el.star}"></p>
                                 </div>
                             </div>
                             <div class="time-product">
                                 <img src="../images/car.svg" alt="">
-                                <p>35 - 45 мин</p>
-                            </div>
-                        </div>
-                        <div class="card-product">
-                            <a><img src="https://eda.yandex/images/3569651/7b38925111a4e7f63d5ff7b86eb50177-648x312.jpg" alt=""></a>
-                            <div class="name-product">
-                                <p>Mak.by</p>
-                                <div class="start-product">
-                                    <img src="../images/star.svg" alt="">
-                                    <p>4.8</p>
-                                </div>
-                            </div>
-                            <div class="time-product">
-                                <img src="../images/car.svg" alt="">
-                                <p>30 - 40 мин</p>
-                            </div>
-                        </div>
-                        <div class="card-product">
-                            <a><img src="https://eda.yandex/images/3772784/363315778e80282c639d899dfc8819e4-648x312.jpg" alt=""></a>
-                            <div class="name-product">
-                                <p>KFC</p>
-                                <div class="start-product">
-                                    <img src="../images/star.svg" alt="">
-                                    <p>4.3</p>
-                                </div>
-                            </div>
-                            <div class="time-product">
-                                <img src="../images/car.svg" alt="">
-                                <p>30 - 40 мин</p>
-                            </div>
-                        </div>
-                        <div class="card-product">
-                            <a><img src="https://eda.yandex/images/1463280/72f8570b3c1405190f469c161c90195d-648x312.jpg" alt=""></a>
-                            <div class="name-product">
-                                <p>Doner-kebab #1</p>
-                                <div class="start-product">
-                                    <img src="../images/star.svg" alt="">
-                                    <p>4.8</p>
-                                </div>
-                            </div>
-                            <div class="time-product">
-                                <img src="../images/car.svg" alt="">
-                                <p>25 - 35 мин</p>
+                                <p th:text="${el.delivery_time} + ' мин'"></p>
                             </div>
                         </div>
                     </div>
@@ -149,6 +107,6 @@
         </div>
         <hr> 
 	</main>
-    <footer th:insert="html/footer.html :: footer"></footer>
+    <footer th:insert="~{html/footer.html :: footer}"></footer>
 </body>
 </html>
