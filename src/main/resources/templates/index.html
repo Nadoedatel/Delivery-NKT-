@@ -86,6 +86,22 @@
                     <div>
                         Filter
                     </div>
+                    <div th:each = "el : ${posts}">
+                        <div class="card-product">
+                            <a><img th:img="${el.img}" alt=""></a>
+                            <div class="name-product">
+                                <p th:text="${el.title}"></p>
+                                <div class="start-product">
+                                    <img src="../images/star.svg" alt="">
+                                    <p th:text="${el.star}"></p>
+                                </div>
+                            </div>
+                            <div class="time-product">
+                                <img src="../images/car.svg" alt="">
+                                <p>35 - 45 мин</p>
+                            </div>
+                        </div>
+                    </div>
                     <div class="box-card-product">
                         <div class="card-product">
                             <a><img src="https://eda.yandex/images/13439948/ce2c341763afb5655d56958e83329995-648x312.jpg" alt=""></a>
