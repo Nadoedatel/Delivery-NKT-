@@ -1,6 +1,6 @@
 <div class="logo-input" th:fragment="header">
     <div>
-        <a href="#"><img class="logo" src="../images/logo.svg" alt="Logo"></a>
+        <a href="/"><img class="logo" src="../images/logo.svg" alt="Logo"></a>
     </div>
     <div class="search-product">
         <input class="found-input" type="search" placeholder="Найти товар">
@@ -8,5 +8,12 @@
     </div>
 </div>
 <div th:fragment="header">
-    <a href="#"><img class="profile" src="../images/profile.svg" alt="Profile"></a>
+     <!-- Если пользователь авторизован, показываем ссылку на профиль -->
+     <a th:if="${#authorization.expression('isAuthenticated()')}" th:href="@{/profile}">
+        <img class="profile" src="../images/profile.svg" alt="Profile">
+    </a>
+    <!-- Если не авторизован, отправляем на страницу логина -->
+    <a th:unless="${#authorization.expression('isAuthenticated()')}" th:href="@{/login}">
+        <img class="profile" src="../images/profile.svg" alt="Profile">
+    </a>
 </div>
