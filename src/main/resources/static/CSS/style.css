@@ -73,6 +73,7 @@ h1{
     flex-direction: row;
     gap: 10px;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .shops img{
@@ -112,7 +113,7 @@ h1{
 }
 
 .card-product{
-    max-width: 268px;
+    max-width: 190px;
 }
 
 .card-product img{
@@ -163,6 +164,7 @@ h1{
     flex-direction: row;
     justify-content: center;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 .footer-nav{
@@ -187,6 +189,7 @@ li{
     min-width: 210px;
     font-size: 17px ;
 }
+
 
 .company-footer-nav{
     display: flex;
