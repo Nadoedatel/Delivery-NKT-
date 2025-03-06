@@ -21,18 +21,26 @@
             <div class="profile-info">
                 <img src="../images/avatar.png" alt="Avatar">
                 <div>
-                    <p>Имя:</p>
-                    <p>Фамелия:</p>
-                    <p>Почта:</p>
-                    <p>Номер телефона:</p>
-                    <p>Адресс:</p>
-                </div>
-                <div>
-                    <p>12131231231243243243243243243</p>
-                    <p>2</p>
-                    <p>2</p>
-                    <p>3</p>
-                    <p>4</p>
+                    <div class="profile-data">
+                        <p>Имя:</p>
+                        <p th:text="${users.name}"></p>
+                    </div>
+                    <div class="profile-data">
+                        <p>Фамелия:</p>
+                        <p th:text="${users.lastname}"></p>
+                    </div>
+                    <div class="profile-data">
+                        <p>Почта:</p>
+                        <p th:text="${users.email}"></p>
+                    </div>
+                    <div class="profile-data">
+                        <p>Номер телефона:</p>
+                        <p th:text="${users.phone}"></p>
+                    </div>
+                    <div class="profile-data">
+                        <p>Адресс:</p>
+                        <p th:text="${users.address}"></p>
+                    </div>
                 </div>
             </div>
         </div>

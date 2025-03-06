@@ -249,3 +249,10 @@ li{
     color: black;
     text-decoration: none;
 }
+
+.profile-data{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 100px;
+}
