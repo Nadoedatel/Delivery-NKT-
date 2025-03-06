@@ -8,12 +8,5 @@
     </div>
 </div>
 <div th:fragment="header">
-     <!-- Если пользователь авторизован, показываем ссылку на профиль -->
-     <a th:if="${#authorization.expression('isAuthenticated()')}" th:href="@{/profile}">
-        <img class="profile" src="../images/profile.svg" alt="Profile">
-    </a>
-    <!-- Если не авторизован, отправляем на страницу логина -->
-    <a th:unless="${#authorization.expression('isAuthenticated()')}" th:href="@{/login}">
-        <img class="profile" src="../images/profile.svg" alt="Profile">
-    </a>
+    <a href="/profile"><img class="profile" src="../images/profile.svg" alt="Profile"></a>
 </div>
