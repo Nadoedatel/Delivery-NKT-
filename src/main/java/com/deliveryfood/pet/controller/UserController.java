@@ -22,7 +22,7 @@ public class UserController {
         return service.userByID(id);
     }
 
-    @PostMapping("/new-user")
+    @PostMapping("/registration")
     public String addUser(@RequestBody MyUsers users){
         service.addUser(users);
         return "User is saved";

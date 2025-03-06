@@ -13,14 +13,27 @@
     <hr>
     <div class="center">
         <div class="center-1440px">
-            <h2>Вход в систему</h2>
-            <div>
-                <input name="username" type="text" placeholder="Username"
-                       autofocus="true"/>
-                <input name="password" type="password" placeholder="Password"/>
-                <button type="submit">Log In</button>
-                <h4><a href="/registration">Зарегистрироваться</a></h4>
-            </div>
+            <h1>Spring Boot Security- Change default login page</h1>
+
+            <form action="login" method="post">
+                <table>
+                    <div th:if="${param.error}">
+                        <p style="color:red;">Invalid credentials, please try again.</p>
+                    </div>
+                    <tr>
+                        <td>User name:</td>
+                        <td><input type="text" name="username"></td>
+                    </tr>
+                    <tr>
+                        <td>Password:</td>
+                        <td><input type="password" name="password"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" value="Login"></td>
+                    </tr>
+                </table>
+            </form>
         </div>
     </div>
     <hr>
