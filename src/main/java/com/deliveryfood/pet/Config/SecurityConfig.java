@@ -34,10 +34,18 @@ public class SecurityConfig {
         return http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth.requestMatchers("/", "/CSS/**", "/JS/**", "/images/**", "/registration","/login").permitAll()
                         .requestMatchers("/**").authenticated())
+
                 .formLogin(form -> form
-                .loginPage("/login")
-                .failureUrl("/login?error")
-                .permitAll())
+                    .loginPage("/login")
+                    .failureUrl("/login?error")
+                    .permitAll()
+                )
+
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/login")
+                        .permitAll()
+                )
                 .build();
     }
 
