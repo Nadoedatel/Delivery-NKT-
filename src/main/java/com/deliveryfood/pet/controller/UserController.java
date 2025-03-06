@@ -2,17 +2,15 @@ package com.deliveryfood.pet.controller;
 
 
 import com.deliveryfood.pet.Service.UserService;
+import com.deliveryfood.pet.models.MyUsers;
 import com.deliveryfood.pet.models.User;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("")
 @AllArgsConstructor
 public class UserController {
 
@@ -24,4 +22,9 @@ public class UserController {
         return service.userByID(id);
     }
 
+    @PostMapping("/new-user")
+    public String addUser(@RequestBody MyUsers users){
+        service.addUser(users);
+        return "User is saved";
+    };
 }
