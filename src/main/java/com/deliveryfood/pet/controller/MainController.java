@@ -52,4 +52,9 @@ public class MainController {
             return "redirect:/login";
         }
     }
+
+    @GetMapping("/catalog")
+    public String showCatalog() {
+        return "catalog";
+    }
 }

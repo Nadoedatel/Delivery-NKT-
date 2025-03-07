@@ -5,26 +5,50 @@ import com.deliveryfood.pet.Service.UserService;
 import com.deliveryfood.pet.models.MyUsers;
 import com.deliveryfood.pet.models.User;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("")
+@Controller
+@RequestMapping("/")
 @AllArgsConstructor
 public class UserController {
 
     private UserService service;
 
 
-    @GetMapping("/{id}")
+    @GetMapping("/profile/{id}")
     public User userByID(@PathVariable int id) {
         return service.userByID(id);
     }
 
     @PostMapping("/registration")
-    public String addUser(@RequestBody MyUsers users){
-        service.addUser(users);
-        return "User is saved";
+    public String addUser(@RequestParam String username,
+                          @RequestParam String password,
+                          @RequestParam String name,
+                          @RequestParam String lastname,
+                          @RequestParam String email,
+                          @RequestParam(required = false) String phone,
+                          @RequestParam(required = false) String address,
+                          @RequestParam String card) {
+
+        MyUsers newUser = new MyUsers();
+        newUser.setUsername(username);
+        newUser.setPassword(password);
+        newUser.setName(name);
+        newUser.setLastname(lastname);
+        newUser.setEmail(email);
+        newUser.setPhone(phone);
+        newUser.setAddress(address);
+        newUser.setCard(card);
+
+        service.addUser(newUser); // Сохраняем нового пользователя
+        return "redirect:/login"; // После регистрации перенаправляем на страницу входа
+    }
+
+    @GetMapping("/registration")
+    public String showRegistration(){
+        return "registration";
     };
 }
