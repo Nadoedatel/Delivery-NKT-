@@ -31,8 +31,8 @@
                         Filter
                     </div>
                     <div class="box-card-product">
-                        <div th:each="el : ${posts}" class="card-product">
-                            <a><img th:src="${el.img}" alt=""></a>
+                        <div th:each="el : ${posts}" class="card-product" th:data-shop-id="${el.id}">
+                            <img th:src="${el.img}" alt="">
                             <div class="name-product">
                                 <p th:text="${el.title}"></p>
                                 <div class="start-product">

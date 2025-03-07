@@ -1,9 +1,8 @@
 package com.deliveryfood.pet.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity
 public class Post {
@@ -15,6 +14,10 @@ public class Post {
     private String title, img, description, delivery_time;
 
     private double star;
+
+
+    @OneToMany(mappedBy = "post")
+    private Set<Catalog> catalog;
 
     public double getStar() {
         return star;

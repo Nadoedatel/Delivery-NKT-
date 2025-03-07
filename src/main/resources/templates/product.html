@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<header th:insert="~{html/header.html :: header}"></header>
+<main>
+    <hr>
+    <div class="center">
+        <div class="center-1440px">
+            <img src="" alt="logo_company">
+            <p>Menu</p>
+            <a href="/product/add">Добавить товар</a>
+            <div class="box-card-product catalog">
+                <div th:each="product : ${products}" class="card-product">
+                    <img src="" alt="photo-product">
+                    <div class="description-product">
+                        <div class="name-product-catalog">
+                            <p th:text="${product.price}">Price</p>
+                            <p th:text="${product.name}" >Name</p>
+                            <p>Gramm</p>
+                        </div>
+                        <button>+ Добавить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+</main>
+<footer th:insert="~{html/footer.html :: footer}"></footer>
+<script src="/static/JS/script.js"></script>
+</body>
+</html>
