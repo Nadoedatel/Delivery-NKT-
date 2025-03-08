@@ -270,13 +270,52 @@ li{
     justify-content: left;
 }
 
-.name-product-catalog P{
-    
-}
-
 .catalog{
     box-shadow: 0px 13px 19px 0px rgba(0, 0, 0, 0.07);
     border: 1px solid rgba(222, 222, 222, 1);
     padding: 20px;
     border-radius: 20px;
+}
+
+.auth input{
+    border: none;
+    border: 1px solid rgba(232, 232, 232, 1);
+    box-shadow: 0px 13px 19px 0px rgba(0, 0, 0, 0.07);
+    border-radius: 10px;
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+}
+
+table{
+    width: 100%;
+} 
+
+.auth td{
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    margin-top: 10px;
+}
+
+.auth button{
+    border-radius: 15px;
+    padding: 10px 10px;
+    cursor: pointer;
+    border: none;
+    background-color: #FCE000;
+}
+
+.auth button:hover{
+     background-color: #a8a687; 
+     transform: scale(1);
+     transition: background-color 0.8s ease, transform 0.3s ease;
+}
+
+.new-acc{
+    text-align: center;
+}
+
+.new-acc a{
+    color: black;
 }

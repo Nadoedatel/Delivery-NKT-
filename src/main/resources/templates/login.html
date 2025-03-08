@@ -13,28 +13,26 @@
     <hr>
     <div class="center">
         <div class="center-1440px">
-            <h1>Spring Boot Security- Change default login page</h1>
-
+            <h1>Войти в аккаунт</h1>
             <form action="login" method="post">
                 <table>
                     <div th:if="${param.error}">
-                        <p style="color:red;">Invalid credentials, please try again.</p>
+                        <p style="color:red;">Неверный пароль или логин, попробуй снова.</p>
                     </div>
-                    <tr>
-                        <td>User name:</td>
-                        <td><input type="text" name="username"></td>
+                    <tr class="auth">
+                        <td><input type="text" name="username" placeholder="Логин"></td>
                     </tr>
-                    <tr>
-                        <td>Password:</td>
-                        <td><input type="password" name="password"></td>
+                    <tr class="auth">
+                        <td><input type="password" name="password" placeholder="Пароль"></td>
                     </tr>
-                    <tr>
-                        <td></td>
-                        <td><input type="submit" value="Login"></td>
-                        <p>Нет аккаунта? <a href="/registration">Зарегистрироваться</a></p>
+                    <tr class="auth">
+                        <td><button >Войти</button></td>
                     </tr>
                 </table>
             </form>
+            <div class="new-acc">
+                <p>Нет аккаунта? <a href="/registration">Зарегистрироваться</a></p>
+            </div>
         </div>
     </div>
     <hr>
