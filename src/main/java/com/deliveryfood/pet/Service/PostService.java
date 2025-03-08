@@ -13,7 +13,7 @@ public class PostService {
     @Autowired
     private ProductRepository productRepository;
 
-    public List<Product> getProductByShopId(Long storeId) {
-        return productRepository.findByCatalog_Post_Id(storeId);
+    public List<Product> getProductByPostId(Long postId) {
+        return productRepository.findByCatalog_Post_Id(postId);
     }
 }

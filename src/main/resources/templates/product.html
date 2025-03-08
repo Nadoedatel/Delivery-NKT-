@@ -15,7 +15,8 @@
         <div class="center-1440px">
             <img src="" alt="logo_company">
             <p>Menu</p>
-            <a href="/product/add">Добавить товар</a>
+            <a th:href="@{/product/{id}/add(id=${post.id})}">Добавить товар</a>
+            <a th:href="@{/product/{id}(id=${post.id})}">Назад к списку товаров</a>
             <div class="box-card-product catalog">
                 <div th:each="product : ${products}" class="card-product">
                     <img src="" alt="photo-product">

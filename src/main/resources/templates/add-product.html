@@ -28,10 +28,14 @@
                     <input type="number" id="gram" name="gram" step="1" required>
                 </div>
                 <div>
+                    <!-- Скрытое поле для передачи ID магазина -->
+                    <input type="hidden" name="postId" th:value="${postId}">
+                </div>
+                <div>
                     <button type="submit">Добавить</button>
                 </div>
             </form>
-            <a href="/product">Назад к списку товаров</a>
+            <a th:href="@{/}">Назад к списку товаров</a>
         </div>
     </div>
     <hr>

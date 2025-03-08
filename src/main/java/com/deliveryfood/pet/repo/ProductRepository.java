@@ -8,6 +8,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
-
-    List<Product> findByCatalog_Post_Id(Long storeId);
+    @Query("SELECT p FROM Product p JOIN p.catalog c WHERE c.post.id = :postId")
+    List<Product> findByCatalog_Post_Id(@Param("postId") Long postId);
 }
