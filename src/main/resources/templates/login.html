@@ -16,6 +16,9 @@
             <h1>Войти в аккаунт</h1>
             <form action="login" method="post">
                 <table>
+                    <div th:if="${successMessage}" class="success-message">
+                        <p th:text="${successMessage}"></p>
+                    </div>
                     <div th:if="${param.error}">
                         <p style="color:red;">Неверный пароль или логин, попробуй снова.</p>
                     </div>

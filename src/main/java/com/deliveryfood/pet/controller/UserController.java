@@ -7,6 +7,7 @@ import com.deliveryfood.pet.models.User;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class UserController {
                           @RequestParam String email,
                           @RequestParam(required = false) String phone,
                           @RequestParam(required = false) String address,
-                          @RequestParam String card) {
+                          RedirectAttributes redirectAttributes) {
 
         MyUsers newUser = new MyUsers();
         newUser.setUsername(username);
@@ -41,8 +42,9 @@ public class UserController {
         newUser.setEmail(email);
         newUser.setPhone(phone);
         newUser.setAddress(address);
-        newUser.setCard(card);
 
+
+        redirectAttributes.addFlashAttribute("successMessage", "Регистрация прошла успешно!");
         service.addUser(newUser); // Сохраняем нового пользователя
         return "redirect:/login"; // После регистрации перенаправляем на страницу входа
     }

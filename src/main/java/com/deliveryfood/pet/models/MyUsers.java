@@ -21,8 +21,9 @@ public class MyUsers {
     private String email;
     private String phone;
     private String address;
-    @Column(unique = true)
     private String  card;
     private int reg_data;
     private int history_order;
+
+    
 }
