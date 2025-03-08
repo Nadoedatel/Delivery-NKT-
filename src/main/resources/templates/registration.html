@@ -13,46 +13,48 @@
     <hr>
     <div class="center">
         <div class="center-1440px">
-            <h2>Регистрация</h2>
-
+            <h1 style="text-align: center;">Регистрация</h1>
             <!-- Форма регистрации -->
-            <form action="/registration" method="POST">
-
-                <!-- Поле для имени пользователя -->
-                <label for="username">Имя пользователя:</label>
-                <input type="text" id="username" name="username" required><br><br>
-
-                <!-- Поле для пароля -->
-                <label for="password">Пароль:</label>
-                <input type="password" id="password" name="password" required><br><br>
-
-                <!-- Поле для имени -->
-                <label for="name">Имя:</label>
-                <input type="text" id="name" name="name" required><br><br>
-
-                <!-- Поле для фамилии -->
-                <label for="lastname">Фамилия:</label>
-                <input type="text" id="lastname" name="lastname" required><br><br>
-
-                <!-- Поле для email -->
-                <label for="email">Электронная почта:</label>
-                <input type="email" id="email" name="email" required><br><br>
-
-                <!-- Поле для телефона -->
-                <label for="phone">Телефон:</label>
-                <input type="text" id="phone" name="phone"><br><br>
-
-                <!-- Поле для адреса -->
-                <label for="address">Адрес:</label>
-                <input type="text" id="address" name="address"><br><br>
-
-                <!-- Поле для карты -->
-                <label for="card">Номер карты:</label>
-                <input type="text" id="card" name="card"><br><br>
-                <button type="submit">Зарегистрироваться</button>
+            <form  action="/registration" method="POST">
+                <div class="auth-double">
+                    <div class="auth-left-box">
+                        <!-- Поле для имени пользователя -->
+                        <label for="username">Имя пользователя:</label>
+                        <input type="text" id="username" name="username" required>
+                        <br>
+                        <!-- Поле для пароля -->
+                        <label for="password">Пароль:</label>
+                        <input type="password" id="password" name="password" required>
+                        <br>
+                        <!-- Поле для имени -->
+                        <label for="name">Имя:</label>
+                        <input type="text" id="name" name="name" required>
+                        <br>
+                        <!-- Поле для фамилии -->
+                        <label for="lastname">Фамилия:</label>
+                        <input type="text" id="lastname" name="lastname" required>
+                    </div>
+                    <div class="auth-right-box">
+                        <!-- Поле для email -->
+                        <label for="email">Электронная почта:</label>
+                        <input type="email" id="email" name="email" required>
+                        <br>
+                        <!-- Поле для телефона -->
+                        <label for="phone">Телефон:</label>
+                        <input type="text" id="phone" name="phone">
+                        <br>
+                        <!-- Поле для адреса -->
+                        <label for="address">Адрес:</label>
+                        <input type="text" id="address" name="address">
+                        <br>
+                        <br>
+                        <button type="submit">Зарегистрироваться</button>
+                    </div>
+                </div>
             </form>
-
-            <p>Уже есть аккаунт? <a href="/login">Войти</a></p>
+            <div class="new-acc">
+                <p>Уже есть аккаунт? <a href="/login">Войти</a></p>
+            </div>
         </div>
     </div>
     <hr>
