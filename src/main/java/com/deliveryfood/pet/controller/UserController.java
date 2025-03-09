@@ -45,12 +45,14 @@ public class UserController {
 
 
         redirectAttributes.addFlashAttribute("successMessage", "Регистрация прошла успешно!");
-        service.addUser(newUser); // Сохраняем нового пользователя
-        return "redirect:/login"; // После регистрации перенаправляем на страницу входа
+        service.addUser(newUser);
+        return "redirect:/login";
     }
 
     @GetMapping("/registration")
-    public String showRegistration(){
+    public String showRegistration() {
         return "registration";
-    };
+    }
+
+    ;
 }

@@ -25,21 +25,21 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     @Bean
-    public UserDetailsService userDetailsService(){
+    public UserDetailsService userDetailsService() {
         return new MyUserDetailsService();
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http)  throws Exception{
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth -> auth.requestMatchers("/", "/CSS/**", "/JS/**", "/images/**", "/registration","/login").permitAll()
+                .authorizeHttpRequests(auth -> auth.requestMatchers("/", "/cart/**", "/CSS/**", "/JS/**", "/images/**", "/registration", "/login", "/cart").permitAll()
                         .requestMatchers("/**").authenticated())
 
                 .formLogin(form -> form
-                    .loginPage("/login")
-                    .failureUrl("/login?error")
+                        .loginPage("/login")
+                        .failureUrl("/login?error")
                         .defaultSuccessUrl("/", true)
-                    .permitAll()
+                        .permitAll()
                 )
 
                 .logout(logout -> logout
@@ -59,7 +59,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 

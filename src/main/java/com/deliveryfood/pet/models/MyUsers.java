@@ -3,6 +3,10 @@ package com.deliveryfood.pet.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.security.core.context.SecurityContextHolder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -21,9 +25,7 @@ public class MyUsers {
     private String email;
     private String phone;
     private String address;
-    private String  card;
+    private String card;
     private int reg_data;
     private int history_order;
-
-    
 }

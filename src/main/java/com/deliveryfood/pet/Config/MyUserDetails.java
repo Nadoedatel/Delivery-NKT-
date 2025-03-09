@@ -11,9 +11,13 @@ public class MyUserDetails implements UserDetails {
 
     private MyUsers users;
 
-    public MyUserDetails(MyUsers users){
+    public MyUserDetails(MyUsers users) {
         this.users = users;
-    };
+    }
+
+    public MyUsers getMyUser() {
+        return users;
+    }
 
     @Override
     public String getUsername() {

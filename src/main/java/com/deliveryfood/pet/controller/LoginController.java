@@ -10,12 +10,11 @@ public class LoginController {
 
     @GetMapping("/login")
     public String showLoginPage(Model model) {
-        // Если есть сообщение об успешной регистрации, оно будет автоматически добавлено в модель
         return "login";
     }
 
     @RequestMapping("/login")
-    public String login(){
+    public String login() {
         return "login";
     }
 }

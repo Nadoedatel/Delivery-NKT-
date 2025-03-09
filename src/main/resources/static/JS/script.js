@@ -6,6 +6,7 @@ document.querySelectorAll('.card-product').forEach(card => {
         }
     });
 });
+
 document.getElementById('registration').addEventListener('click', function(){
     window.location.href = '/registration';
 })

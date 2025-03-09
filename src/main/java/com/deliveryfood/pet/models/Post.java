@@ -9,12 +9,11 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private  Long id;
+    private Long id;
 
     private String title, img, description, delivery_time;
 
     private double star;
-
 
     @OneToMany(mappedBy = "post")
     private Set<Catalog> catalog;

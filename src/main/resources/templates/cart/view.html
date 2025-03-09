@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header th:insert="~{html/header.html :: header}"></header>
+    <main>
+        <hr>
+        <div class="center">
+            <div class="center-1440px">
+                <h1>Your Cart</h1>
+
+                <div th:if="${cart != null}">
+                    <h2>Your Cart Items:</h2>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="item : ${cart.items}">
+                            <td th:text="${item.product.name}">Product Name</td>
+                            <td th:text="${item.quantity}">Quantity</td>
+                            <td th:text="${item.product.price}">Price</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div th:if="${cart == null}">
+                    <p>Your cart is empty.</p>
+                </div>
+            </div>
+        </div>
+        <hr>
+	</main>
+    <footer th:insert="~{html/footer.html :: footer}"></footer>
+    <script src="/JS/script.js"></script>
+    <script src="/JS/cart.js" defer></script>
+</body>
+</html>

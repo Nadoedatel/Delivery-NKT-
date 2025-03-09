@@ -14,7 +14,7 @@ public class User {
     private String email;
     private String phone;
     private String address;
-    private String  card;
+    private String card;
     private int reg_data;
     private int history_order;
 }
