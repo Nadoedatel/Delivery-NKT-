@@ -45,9 +45,10 @@ public class ProductController {
             @RequestParam String name,
             @RequestParam double price,
             @RequestParam int gram,
+            @RequestParam String img,
             @RequestParam Long postId, // Получаем ID магазина из формы
             Model model) {
-        Product product = new Product(name, price, gram);
+        Product product = new Product(name, price, gram, img);
         productRepository.save(product);
 
         // Добавляем связь между товаром и магазином

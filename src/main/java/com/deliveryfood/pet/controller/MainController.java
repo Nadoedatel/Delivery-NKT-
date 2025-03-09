@@ -53,6 +53,11 @@ public class MainController {
         }
     }
 
+    @GetMapping("/cart")
+    public String cart(Model model){
+        return "cart";
+    }
+
     @GetMapping("/catalog")
     public String showCatalog() {
         return "catalog";

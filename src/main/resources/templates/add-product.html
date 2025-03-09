@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
-    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" th:href="@{/CSS/style.css}">
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,23 +15,28 @@
         <div class="center-1440px">
             <h1>Добавить товар</h1>
             <form action="/product/add" method="post">
-                <div>
+                <div class="auth">
                     <label for="name">Название товара:</label>
                     <input type="text" id="name" name="name" required>
                 </div>
-                <div>
+                <div class="auth">
                     <label for="price">Цена:</label>
                     <input type="number" id="price" name="price" step="0.01" required>
                 </div>
-                <div>
-                    <label for="gram">Цена:</label>
+                <div class="auth">
+                    <label for="price">Сылка на картинку:</label>
+                    <input type="text" id="img" name="img" required>
+                </div>
+                <div class="auth">
+                    <label for="gram">Грамовка:</label>
                     <input type="number" id="gram" name="gram" step="1" required>
                 </div>
-                <div>
+                <div class="auth">
                     <!-- Скрытое поле для передачи ID магазина -->
                     <input type="hidden" name="postId" th:value="${postId}">
                 </div>
-                <div>
+                <br>
+                <div class="auth">
                     <button type="submit">Добавить</button>
                 </div>
             </form>

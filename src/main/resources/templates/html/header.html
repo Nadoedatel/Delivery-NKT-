@@ -1,6 +1,6 @@
 <div class="logo-input" th:fragment="header">
     <div>
-        <a href="/"><img class="logo" src="../images/logo.svg" alt="Logo"></a>
+        <a href="/"><img class="logo" th:src="@{/images/logo.svg}" alt="Logo"></a>
     </div>
     <div class="search-product">
         <input class="found-input" type="search" placeholder="Найти товар">
@@ -8,5 +8,6 @@
     </div>
 </div>
 <div th:fragment="header">
-    <a href="/profile"><img class="profile" src="../images/profile.svg" alt="Profile"></a>
+    <a href="/cart"><img class="profile" th:src="@{/images/cart.svg}" alt="cart"></a>
+    <a href="/profile"><img class="profile" th:src="@{/images/profile.svg}" alt="Profile"></a>
 </div>

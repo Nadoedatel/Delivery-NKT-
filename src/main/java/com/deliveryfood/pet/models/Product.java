@@ -25,10 +25,11 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, double price, int gram) {
+    public Product(String name, double price, int gram, String img) {
         this.name = name;
         this.price = price;
         this.gram = gram;
+        this.img = img;
     }
 
     public Long getId() {
