@@ -13,38 +13,37 @@
         <hr>
         <div class="center">
             <div class="center-1440px">
-                <h1>Your Cart</h1>
-
-                <div th:if="${cart != null}">
-                    <h2>Your Cart Items:</h2>
-                    <table>
-                        <tr>
-                            <th>Товар</th>
-                            <th>Количество</th>
-                            <th>Действия</th>
-                        </tr>
-                        <tr th:each="item : ${cart.items}">
-                            <td th:text="${item.product.name}"></td>
-                            <td>
-                                <form action="/cart/update-quantity" method="post">
+                <section>
+                    <div class="cart">
+                        <h1>Корзина</h1>
+                        <div>
+                            <div class="card-name"  th:if="${cart != null}">
+                                <p>Товар</p>
+                                <p>Количество</p>
+                                <p>Действия</p>
+                            </div>
+                            <div class="card-items" th:each="item : ${cart.items}">
+                                <div class="cart-product">
+                                    <img th:src="${item.product.img}">
+                                    <a th:text="${item.product.name}"></a>
+                                </div>
+                                <div>
+                                    <form  id="reload" action="/cart/update-quantity" method="post">
+                                        <input type="hidden" name="cartItemId" th:value="${item.id}" />
+                                        <input type="number" name="quantity" th:value="${item.quantity}" min="1" />
+                                    </form>
+                                </div>
+                                <div  class="cart-actions">
+                                    <button form="delete" type="submit">Удалить</button>
+                                    <button form="reload" type="submit">Обновить</button>
+                                </div>
+                                <form id="delete" action="/cart/remove-item" method="post">
                                     <input type="hidden" name="cartItemId" th:value="${item.id}" />
-                                    <input type="number" name="quantity" th:value="${item.quantity}" min="1" />
-                                    <button type="submit">Обновить</button>
                                 </form>
-                            </td>
-                            <td>
-                                <form action="/cart/remove-item" method="post">
-                                    <input type="hidden" name="cartItemId" th:value="${item.id}" />
-                                    <button type="submit">Удалить</button>
-                                </form>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-
-                <div th:if="${cart == null}">
-                    <p>Your cart is empty.</p>
-                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
         <hr>
