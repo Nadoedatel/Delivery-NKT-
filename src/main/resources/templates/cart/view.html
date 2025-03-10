@@ -18,20 +18,27 @@
                 <div th:if="${cart != null}">
                     <h2>Your Cart Items:</h2>
                     <table>
-                        <thead>
                         <tr>
-                            <th>Product</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
+                            <th>Товар</th>
+                            <th>Количество</th>
+                            <th>Действия</th>
                         </tr>
-                        </thead>
-                        <tbody>
                         <tr th:each="item : ${cart.items}">
-                            <td th:text="${item.product.name}">Product Name</td>
-                            <td th:text="${item.quantity}">Quantity</td>
-                            <td th:text="${item.product.price}">Price</td>
+                            <td th:text="${item.product.name}"></td>
+                            <td>
+                                <form action="/cart/update-quantity" method="post">
+                                    <input type="hidden" name="cartItemId" th:value="${item.id}" />
+                                    <input type="number" name="quantity" th:value="${item.quantity}" min="1" />
+                                    <button type="submit">Обновить</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form action="/cart/remove-item" method="post">
+                                    <input type="hidden" name="cartItemId" th:value="${item.id}" />
+                                    <button type="submit">Удалить</button>
+                                </form>
+                            </td>
                         </tr>
-                        </tbody>
                     </table>
                 </div>
 

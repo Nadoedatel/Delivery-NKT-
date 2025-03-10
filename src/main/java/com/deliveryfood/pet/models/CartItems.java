@@ -3,18 +3,22 @@ package com.deliveryfood.pet.models;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "cart_items")
 public class CartItems {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    private Cart cart;  // Связь с корзиной
+    @JoinColumn(name = "cart_id", nullable = false)
+    private Cart cart;
 
     @ManyToOne
-    private Product product;  // Связь с продуктом
+    @JoinColumn(name = "product_id", nullable = false)
+    private Product product;
 
-    private int quantity;  // Количество товара
+    @Column(nullable = false)
+    private int quantity; // Количество товара
 
     public CartItems() {
     }

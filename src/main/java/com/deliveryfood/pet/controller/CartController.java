@@ -4,8 +4,10 @@ package com.deliveryfood.pet.controller;
 import com.deliveryfood.pet.Config.MyUserDetails;
 import com.deliveryfood.pet.Service.CartService;
 import com.deliveryfood.pet.models.Cart;
+import com.deliveryfood.pet.models.CartItems;
 import com.deliveryfood.pet.models.MyUsers;
 import com.deliveryfood.pet.models.Product;
+import com.deliveryfood.pet.repo.CartItemRepository;
 import com.deliveryfood.pet.repo.ProductRepository;
 import com.deliveryfood.pet.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +62,23 @@ public class CartController {
         model.addAttribute("cart", cart);  // Добавляем корзину в модель
         return "cart/view";  // Возвращаем представление корзины
     }
+
+
+    // Увеличение или уменьшение количества товара
+    @PostMapping("/update-quantity")
+    public String updateQuantity(@RequestParam Long cartItemId, @RequestParam int quantity) {
+        cartService.updateQuantity(cartItemId, quantity);
+        return "redirect:/cart/view";
+    }
+
+    @PostMapping("/remove-item")
+    public String removeItem(@RequestParam("cartItemId") Long cartItemId) {
+        System.out.println("Удаляем товар с ID: " + cartItemId);
+        cartService.removeItemFromCart(cartItemId);;  // Удаление товара
+        return "redirect:/cart/view";  // Перенаправление обратно в корзину
+    }
+
+
 
 
 

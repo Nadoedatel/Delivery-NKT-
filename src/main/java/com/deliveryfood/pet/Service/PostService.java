@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class PostService {
+public class  PostService {
 
     @Autowired
     private ProductRepository productRepository;

@@ -11,9 +11,8 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Автоматическая генерация ID
     private Long id;
 
-    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<CartItems> items = new ArrayList<>();
-
     @ManyToOne
     private MyUsers user;
 

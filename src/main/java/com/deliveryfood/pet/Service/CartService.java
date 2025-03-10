@@ -4,11 +4,15 @@ import com.deliveryfood.pet.models.Cart;
 import com.deliveryfood.pet.models.CartItems;
 import com.deliveryfood.pet.models.MyUsers;
 import com.deliveryfood.pet.models.Product;
+import com.deliveryfood.pet.repo.CartItemRepository;
 import com.deliveryfood.pet.repo.CartRepository;
 import com.deliveryfood.pet.repo.ProductRepository;
 import com.deliveryfood.pet.repo.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class CartService {
@@ -21,23 +25,34 @@ public class CartService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private CartItemRepository cartItemRepository;
+
+
     // Метод для добавления товара в корзину
     public void addToCart(MyUsers user, Product product, int quantity) {
-        Long userId = user.getId();  // Получаем идентификатор пользователя
-        Cart cart = cartRepository.findByUserId(userId);  // Ищем корзину по идентификатору пользователя
+        Cart cart = cartRepository.findByUserId(user.getId());
+
         if (cart == null) {
-            cart = new Cart();  // Если корзины нет, создаем новую
-            cart.setUser(user);  // Привязываем корзину к пользователю
+            cart = new Cart();
+            cart.setUser(user);
             cartRepository.save(cart);
         }
 
-        // Создаем CartItems с нужными параметрами
-        CartItems cartItem = new CartItems(cart, product, quantity);
+        Optional<CartItems> existingItem = cart.getItems().stream()
+                .filter(item -> item.getProduct().getId().equals(product.getId()))
+                .findFirst();
 
-        // Добавляем CartItems в корзину
-        cart.addItem(product, quantity);   // Теперь addItem принимает CartItems
-        cartRepository.save(cart);  // Сохраняем обновленную корзину
+        if (existingItem.isPresent()) {
+            existingItem.get().setQuantity(existingItem.get().getQuantity() + quantity);
+            cartItemRepository.save(existingItem.get());
+        } else {
+            CartItems cartItem = new CartItems(cart, product, quantity);
+            cart.getItems().add(cartItem);
+            cartRepository.save(cart);
+        }
     }
+
 
 
 
@@ -67,5 +82,24 @@ public class CartService {
         }
         return cart;
     }
+
+    public void updateQuantity(Long cartItemId, int quantity) {
+        CartItems cartItem = cartItemRepository.findById(cartItemId)
+                .orElseThrow(() -> new RuntimeException("Товар в корзине не найден"));
+
+        if (quantity > 0) {
+            cartItem.setQuantity(quantity);
+            cartItemRepository.save(cartItem);
+        } else {
+            cartItemRepository.delete(cartItem);
+        }
+    }
+
+    @Transactional
+    public void removeItemFromCart(Long cartItemId) {
+        cartItemRepository.deleteByCartItemId(cartItemId);  // Удаление товара из корзины
+    }
+
+
 
 }
