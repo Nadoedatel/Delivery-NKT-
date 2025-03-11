@@ -12,6 +12,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -28,6 +29,9 @@ public class CartService {
     @Autowired
     private CartItemRepository cartItemRepository;
 
+    public List<CartItems> getCartItems(Long userId) {
+        return cartItemRepository.findByCartUserId(userId);
+    }
 
     // Метод для добавления товара в корзину
     public void addToCart(MyUsers user, Product product, int quantity) {
@@ -52,9 +56,6 @@ public class CartService {
             cartRepository.save(cart);
         }
     }
-
-
-
 
 
     // Получение корзины пользователя, либо создание новой
@@ -99,7 +100,8 @@ public class CartService {
     public void removeItemFromCart(Long cartItemId) {
         cartItemRepository.deleteByCartItemId(cartItemId);  // Удаление товара из корзины
     }
-
-
-
+    @Transactional
+    public void clearCart(Long userId) {
+        cartItemRepository.deleteAllByUserId(userId);
+    }
 }

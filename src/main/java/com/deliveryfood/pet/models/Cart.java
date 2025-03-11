@@ -10,10 +10,11 @@ public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Автоматическая генерация ID
     private Long id;
-
+    
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<CartItems> items = new ArrayList<>();
-    @ManyToOne
+    @OneToOne
+    @JoinColumn(name = "user_id", nullable = false)
     private MyUsers user;
 
     // Метод в классе Cart
