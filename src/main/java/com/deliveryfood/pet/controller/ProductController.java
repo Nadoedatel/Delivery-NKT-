@@ -8,6 +8,7 @@ import com.deliveryfood.pet.repo.CatalogRepository;
 import com.deliveryfood.pet.repo.PostRepository;
 import com.deliveryfood.pet.repo.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,6 +35,7 @@ public class ProductController {
     private PostService postService;
 
     @GetMapping("/product/{id}/add")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public String showAddProductForm(@PathVariable Long id, Model model) {
         model.addAttribute("postId", id); // Передаем ID магазина в модель
         return "add-product"; // Имя шаблона для формы добавления товара

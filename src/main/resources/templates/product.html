@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="ru">
 <head>
     <link rel="stylesheet" th:href="@{/CSS/style.css}">
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Inter:wght@100..900&display=swap" rel="stylesheet">
@@ -18,7 +18,9 @@
                 <p th:text="${p.title}">fdsfdsfds</p>
             </div>
             <h1 style="text-align: center;">Меню</h1>
-            <a th:href="@{/product/{id}/add(id=${post.id})}">Добавить товар</a>
+            <div sec:authorize="hasAuthority('ROLE_ADMIN')">
+                <a th:href="@{/product/{id}/add(id=${post.id})}" class="btn btn-primary">Добавить товар</a>
+            </div>
             <div class="box-card-product">
                 <div th:each="product : ${products}">
                     <div class="card-product catalog">
