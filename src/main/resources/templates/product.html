@@ -13,28 +13,30 @@
     <hr>
     <div class="center">
         <div class="center-1440px">
-            <div th:each="el : ${posts}">
-                <img th:src="${el.img}" alt="logo_company">
+            <div th:each="p : ${posts}">
+                <img th:src="${p.img}" alt="logo_company">
+                <p th:text="${p.title}">fdsfdsfds</p>
             </div>
-            <p>Menu</p>
+            <h1 style="text-align: center;">Меню</h1>
             <a th:href="@{/product/{id}/add(id=${post.id})}">Добавить товар</a>
-            <div th:each="product : ${products}" class="box-card-product catalog">
-                <div class="card-product">
-                    <img th:src="${product.img}" alt="photo-product">
-                    <div class="description-product">
-                        <div class="name-product-catalog">
-                            <p th:text="${product.price}"></p>
-                            <p th:text="${product.name}" ></p>
-                            <p th:text="${product.gram}"></p>
+            <div class="box-card-product">
+                <div th:each="product : ${products}">
+                    <div class="card-product catalog">
+                        <img th:src="${product.img}" alt="photo-product">
+                        <div class="description-product">
+                            <div class="name-product-catalog">
+                                <b><p th:text="${product.price} + ' р.'"></p></b>
+                                <p th:text="${product.name}" ></p>
+                                <p th:text="${product.gram} + ' г'"></p>
+                            </div>
+                            <!-- Это будет отображаться рядом с каждым товаром -->
+                            <form class="count-form" action="/cart/add-to-cart" method="get">
+                                <input type="hidden" name="productId" th:value="${product.id}" />
+                                <label for="quantity">Количество:</label>
+                                <input type="number" name="quantity" id="quantity" value="1" min="1" required />
+                                <button type="submit">Добавить в корзину</button>
+                            </form>
                         </div>
-                        <!-- Это будет отображаться рядом с каждым товаром -->
-                        <form action="/cart/add-to-cart" method="get">
-                            <input type="hidden" name="productId" th:value="${product.id}" />
-                            <label for="quantity">Количество:</label>
-                            <input type="number" name="quantity" id="quantity" value="1" min="1" required />
-                            <button type="submit">Добавить в корзину</button>
-                        </form>
-
                     </div>
                 </div>
             </div>
