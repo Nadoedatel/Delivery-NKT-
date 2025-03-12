@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header th:insert="~{html/header.html :: header}"></header>
+    <main>
+        <hr>
+        <div class="center">
+            <div class="center-1440px">
+                <section>
+                    <h1>Добавить карту</h1>
+                    <form action="/payment/add" method="post">
+                        <label for="cardNumber">Номер карты:</label>
+                        <input type="text" id="cardNumber" name="cardNumber" required>
+                        <br>
+                        <label for="expiryDate">Срок действия:</label>
+                        <input type="text" id="expiryDate" name="expiryDate" required>
+                        <br>
+                        <label for="cvv">CVV:</label>
+                        <input type="text" id="cvv" name="cvv" required>
+                        <br>
+                        <button type="submit">Добавить карту</button>
+                    </form>
+                </section>
+            </div>
+        </div>
+        <hr>
+	</main>
+    <footer th:insert="~{html/footer.html :: footer}"></footer>
+    <script src="/JS/script.js"></script>
+    <script src="/JS/cart.js" defer></script>
+</body>
+</html>
