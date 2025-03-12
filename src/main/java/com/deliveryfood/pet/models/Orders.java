@@ -32,7 +32,7 @@ public class Orders {
         this.paymentMethod = paymentMethod;
     }
 
-    @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<OrderItem> orderItems = new ArrayList<>();
 
     public Long getId() {

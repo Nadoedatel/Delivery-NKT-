@@ -8,6 +8,7 @@ import com.deliveryfood.pet.models.OrderItem;
 import com.deliveryfood.pet.repo.CartItemRepository;
 import com.deliveryfood.pet.repo.OrderRepository;
 import com.deliveryfood.pet.repo.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,6 +23,9 @@ public class OrderService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private CartService cartService;
@@ -57,5 +61,15 @@ public class OrderService {
 
         cartService.clearCart(userId);
         return savedOrder;
+    }
+    @Transactional
+    public List<Orders> getOrdersByUser(Long userId) {
+        return orderRepository.findByUserId(userId);
+    }
+
+    @Transactional
+    public Orders getOrderDetails(Long orderId) {
+        return orderRepository.findById(orderId)
+                .orElseThrow(() -> new RuntimeException("Заказ не найден"));
     }
 }

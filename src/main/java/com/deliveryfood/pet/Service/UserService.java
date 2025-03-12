@@ -6,6 +6,7 @@ import com.deliveryfood.pet.repo.UserRepository;
 import com.github.javafaker.Faker;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,8 @@ import java.util.stream.IntStream;
 @Service
 @AllArgsConstructor
 public class UserService {
+    @Autowired
+    private UserRepository userRepository;
 
     private List<User> appUser;
     private UserRepository repository;
@@ -52,5 +55,8 @@ public class UserService {
         repository.save(users);
     }
 
-
+    public MyUsers findByUsername(String username) {
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("Пользователь не найден"));
+    }
 }

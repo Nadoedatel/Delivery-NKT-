@@ -2,6 +2,8 @@ package com.deliveryfood.pet.controller;
 
 import com.deliveryfood.pet.Config.MyUserDetails;
 import com.deliveryfood.pet.Service.OrderService;
+import com.deliveryfood.pet.Service.UserService;
+import com.deliveryfood.pet.models.Cart;
 import com.deliveryfood.pet.models.MyUsers;
 import com.deliveryfood.pet.models.Orders;
 import com.deliveryfood.pet.models.Post;
@@ -10,11 +12,16 @@ import jakarta.servlet.http.HttpSession;
 import org.hibernate.query.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.security.Principal;
+import java.util.List;
 
 @Controller
 @RequestMapping("/orders")
@@ -23,17 +30,18 @@ public class OrderController {
     private OrderService orderService;
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     private UserRepository userRepository;
     // GET-метод для отображения страницы с формой
     @GetMapping("/create")
     public String showCreateForm(Model model) {
-        // Получаем текущего пользователя
         MyUsers currentUser = getCurrentUser();
         if (currentUser == null) {
-            return "redirect:/login"; // Перенаправляем на страницу входа, если пользователь не авторизован
+            return "redirect:/login";
         }
 
-        // Передаем userId в модель
         model.addAttribute("userId", currentUser.getId());
         return "cart/orders/create";
     }
@@ -45,19 +53,15 @@ public class OrderController {
             @RequestParam String paymentMethod,
             RedirectAttributes redirectAttributes
     ) {
-        // Получаем текущего пользователя
         MyUsers currentUser = getCurrentUser();
         if (currentUser == null) {
-            return "redirect:/login"; // Перенаправляем на страницу входа, если пользователь не авторизован
+            return "redirect:/login";
         }
 
-        // Создаем заказ
         Orders order = orderService.createOrder(currentUser.getId(), address, paymentMethod);
 
-        // Добавляем flash-атрибут с сообщением об успехе
         redirectAttributes.addFlashAttribute("successMessage", "Заказ успешно создан!");
 
-        // Перенаправляем на главную страницу
         return "redirect:/";
     }
 
@@ -67,7 +71,33 @@ public class OrderController {
         if (principal instanceof MyUserDetails) {
             return ((MyUserDetails) principal).getMyUser();
         }
-        return null; // Если пользователь не авторизован
+        return null;
+    }
+
+
+    @GetMapping("/historyOrders")
+    public String getUserOrders(Authentication authentication, Model model) {
+        // Получаем текущего пользователя
+        MyUserDetails userDetails = (MyUserDetails) authentication.getPrincipal();
+
+        // Получаем ID пользователя
+        MyUsers currentUser = userDetails.getMyUser();  // Извлекаем объект MyUsers
+        Long userId = currentUser.getId();
+
+        // Получаем заказы пользователя
+        List<Orders> orders = orderService.getOrdersByUser(userId);
+        model.addAttribute("orders", orders);
+        return "cart/orders/historyOrders";
+    }
+
+    @GetMapping("/historyOrders-details")
+    public String getOrderDetails(@RequestParam Long orderId, Model model) {
+        Orders orders = orderService.getOrderDetails(orderId);
+        if (orders == null) {
+            throw new RuntimeException("Заказ не найден");
+        }
+        model.addAttribute("orders", orders);
+        return "cart/orders/historyOrders-details";
     }
 }
 
