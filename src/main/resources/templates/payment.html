@@ -14,19 +14,27 @@
         <div class="center">
             <div class="center-1440px">
                 <section>
-                    <h1>Добавить карту</h1>
-                    <form action="/payment/add" method="post">
-                        <label for="cardNumber">Номер карты:</label>
-                        <input type="text" id="cardNumber" name="cardNumber" required>
-                        <br>
-                        <label for="expiryDate">Срок действия:</label>
-                        <input type="text" id="expiryDate" name="expiryDate" required>
-                        <br>
-                        <label for="cvv">CVV:</label>
-                        <input type="text" id="cvv" name="cvv" required>
-                        <br>
-                        <button type="submit">Добавить карту</button>
-                    </form>
+                    <div class="card-form">
+                        <h2>Добавить новую карту</h2>
+                        <form th:action="@{/payment/add}" method="post">
+                            <input type="text" name="cardNumber" placeholder="Номер карты" maxlength="16" required>
+                            <input type="text" name="expiryDate" placeholder="Срок действия (MM/YY)" maxlength="5" oninput="formatExpiryDate(this)" required>
+                            <input type="text" name="cvv" placeholder="CVV" required>
+                            <button type="submit">Добавить карту</button>
+                        </form>
+                    </div>
+                    <div class="card-list">
+                        <h2>Мои карты</h2>
+                        <ul>
+                            <li th:each="card : ${cards}">
+                                <span>Карта: **** **** **** <span th:text="${card.cardNumber.substring(card.cardNumber.length() - 4)}"></span></span>
+                                <span>Срок действия: <span th:text="${card.expiryDate}"></span></span>
+                                <form th:action="@{/payment/delete/{cardId}(cardId=${card.id})}" method="post">
+                                    <button type="submit">Удалить</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
                 </section>
             </div>
         </div>
@@ -34,6 +42,7 @@
 	</main>
     <footer th:insert="~{html/footer.html :: footer}"></footer>
     <script src="/JS/script.js"></script>
+    <script src="/JS/payment.js" defer></script>
     <script src="/JS/cart.js" defer></script>
 </body>
 </html>

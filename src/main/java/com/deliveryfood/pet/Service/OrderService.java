@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -41,7 +42,7 @@ public class OrderService {
         order.setDeliveryAddress(address);
         order.setPaymentMethod(paymentMethod);
         order.setStatus("Оформлен");
-        order.setCreatedAt(LocalDateTime.now());
+        order.setCreatedAt(new Date());
 
         double totalPrice = 0;
         for (CartItems cartItem : cartItems) {

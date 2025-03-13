@@ -1,9 +1,11 @@
 package com.deliveryfood.pet.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -16,7 +18,8 @@ public class Orders {
 
     private double totalPrice;
     private String status;
-    private LocalDateTime createdAt;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm")
+    private Date createdAt;
     private String deliveryAddress;
     private String paymentMethod;
 
@@ -44,7 +47,8 @@ public class Orders {
     }
 
     public double getTotalPrice() {
-        return totalPrice;
+        // Отбрасываем лишние знаки после запятой
+        return ((int)(totalPrice * 100)) / 100.0;
     }
 
     public void setTotalPrice(double totalPrice) {
@@ -59,11 +63,11 @@ public class Orders {
         this.status = status;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
