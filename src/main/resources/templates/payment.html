@@ -14,18 +14,18 @@
         <div class="center">
             <div class="center-1440px">
                 <section>
-                    <div class="card-form">
+                    <div class="auth">
                         <h2>Добавить новую карту</h2>
-                        <form th:action="@{/payment/add}" method="post">
+                        <form class="card-form" th:action="@{/payment/add}" method="post">
                             <input type="text" name="cardNumber" placeholder="Номер карты" maxlength="16" required>
                             <input type="text" name="expiryDate" placeholder="Срок действия (MM/YY)" maxlength="5" oninput="formatExpiryDate(this)" required>
                             <input type="text" name="cvv" placeholder="CVV" required>
                             <button type="submit">Добавить карту</button>
                         </form>
                     </div>
-                    <div class="card-list">
+                    <div class="auth">
                         <h2>Мои карты</h2>
-                        <ul>
+                        <ul class="card-list">
                             <li th:each="card : ${cards}">
                                 <span>Карта: **** **** **** <span th:text="${card.cardNumber.substring(card.cardNumber.length() - 4)}"></span></span>
                                 <span>Срок действия: <span th:text="${card.expiryDate}"></span></span>

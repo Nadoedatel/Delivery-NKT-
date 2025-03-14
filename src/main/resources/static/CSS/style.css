@@ -488,3 +488,46 @@ table{
     justify-content: center;
     gap: 120px;
 }
+
+.create-order{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.option-create-order{
+    border: none;
+    border: 1px solid rgba(232, 232, 232, 1);
+    box-shadow: 0px 13px 19px 0px rgba(0, 0, 0, 0.07);
+    border-radius: 10px;
+    flex-wrap: wrap;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.history-order a{
+    color: black;
+    font-size: 26px;
+}
+
+.history-order li{
+    padding-bottom: 20px;
+}
+
+.history-details{
+    font-size: 26px;
+}
+
+.back-link{
+    color: black    ;
+}
+
+.card-form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card-list{
+    padding: 0;
+}

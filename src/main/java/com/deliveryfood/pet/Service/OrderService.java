@@ -47,7 +47,7 @@ public class OrderService {
         double totalPrice = 0;
         for (CartItems cartItem : cartItems) {
             OrderItem orderItem = new OrderItem();
-            orderItem.setOrders(order); // Устанавливаем связь с заказом
+            orderItem.setOrders(order);
             orderItem.setProduct(cartItem.getProduct().getName());
             orderItem.setQuantity(cartItem.getQuantity());
             orderItem.setPrice(cartItem.getProduct().getPrice());
@@ -57,12 +57,11 @@ public class OrderService {
         }
         order.setTotalPrice(totalPrice);
 
-        // Сохраняем заказ
         Orders savedOrder = orderRepository.save(order);
-
         cartService.clearCart(userId);
         return savedOrder;
     }
+
     @Transactional
     public List<Orders> getOrdersByUser(Long userId) {
         return orderRepository.findByUserId(userId);
@@ -73,4 +72,5 @@ public class OrderService {
         return orderRepository.findById(orderId)
                 .orElseThrow(() -> new RuntimeException("Заказ не найден"));
     }
+    
 }

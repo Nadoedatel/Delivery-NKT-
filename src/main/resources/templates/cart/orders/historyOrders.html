@@ -16,14 +16,16 @@
                 <section>
                     <div class="cart">
                         <h1>История заказов</h1>
-                        <ul>
+                        <ul class="history-order">
                             <li th:each="order : ${orders}">
-                                <a th:href="@{/orders/historyOrders-details(orderId=${order.id})}">Просмотреть детали заказа</a>    
+                                <a>
                                     Заказ #<span th:text="${order.id}"></span> -
                                     <span th:text="${order.status}"></span> -
                                     <span th:text="${order.createdAt}"></span> -
                                     <span th:text="${order.totalPrice}"></span>
                                 </a>
+                                <br>
+                                <a th:href="@{/orders/historyOrders-details(orderId=${order.id})}">Просмотреть детали заказа</a>
                             </li>
                         </ul>
                     </div>

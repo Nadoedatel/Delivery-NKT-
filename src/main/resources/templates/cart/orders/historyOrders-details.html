@@ -14,36 +14,37 @@
     <div class="center">
         <div class="center-1440px">
             <section>
-                <div class="cart">
-                <div th:each="order : ${orders}">
-                    <h1>Детали заказа #<span  th:text="${order.id}"></span></h1>
-                    <p><strong>Статус:</strong> <span th:text="${order.status}"></span></p>
-                    <p><strong>Дата создания:</strong> <span th:text="${order.createdAt}"></span></p>
-                    <p><strong>Адрес доставки:</strong> <span th:text="${order.deliveryAddress}"></span></p>
-                    <p><strong>Способ оплаты:</strong> <span th:text="${order.paymentMethod}"></span></p>
-                    <p><strong>Общая стоимость:</strong> <span th:text="${order.totalPrice}"></span></p>
-
-                </div>
-                <h2>Товары в заказе:</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Товар</th>
-                            <th>Количество</th>
-                            <th>Цена</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="item : ${orders.orderItems}">
-                            <td th:text="${item.product}"></td>
-                            <td th:text="${item.quantity}"></td>
-                            <td th:text="${item.price}"></td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <a th:href="@{/}" class="back-link">← Вернуться к списку заказов</a>
-
+                <div class="cart history-details">
+                    <div th:each="order : ${orders}">
+                        <h1>Детали заказа #<span  th:text="${order.id}"></span></h1>
+                        <p><strong>Статус:</strong> <span th:text="${order.status}"></span></p>
+                        <p><strong>Дата создания:</strong> <span th:text="${order.createdAt}"></span></p>
+                        <p><strong>Адрес доставки:</strong> <span th:text="${order.deliveryAddress}"></span></p>
+                        <p><strong>Способ оплаты:</strong> <span th:text="${order.paymentMethod}"></span></p>
+                        <p><strong>Общая стоимость:</strong> <span th:text="${order.totalPrice}"></span></p>
+                    </div>
+                    <h2>Товары в заказе:</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Товар</th>
+                                <th>Количество</th>
+                                <th>Цена</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="item : ${orders.orderItems}">
+                                <td th:text="${item.product}"></td>
+                                <td th:text="${item.quantity}"></td>
+                                <td th:text="${item.price}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                        <!-- <form class="auth" th:action="@{/orders/cancel}" method="post">
+                            <input type="hidden" name="orderId" th:value="${orders.id}">
+                            <button type="submit" th:if="${orders.status == 'Оформлен'}">Отменить заказ</button>
+                        </form> -->
+                    <a th:href="@{/}" class="back-link">← Вернуться к списку заказов</a>
                 </div>
             </section>
         </div>

@@ -38,6 +38,7 @@ public class Orders {
     @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<OrderItem> orderItems = new ArrayList<>();
 
+
     public Long getId() {
         return id;
     }
